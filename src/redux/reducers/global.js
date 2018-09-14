@@ -37,8 +37,26 @@ const getList = (state, action) => {
   }
 }
 
+const moveCard = (state, action) => {
+  const lists = state.lists;
+  const {column, item, newColumn, newItem} = action;
+  const tmp = lists[column].cards[item];
+  if(column === newColumn) {
+    lists[column].cards[item] = lists[column].cards[newItem]
+    lists[column].cards[newItem] = tmp;
+  } else {
+    lists[column].cards.splice(item, 1)
+    lists[newColumn].cards.splice(newItem, 0, tmp)
+  }
+  return {
+    ...state,
+    lists
+  }
+}
+
 const handlers = {
   [Types.GET_LIST]: getList,
+  [Types.MOVE_CARD]: moveCard,
 }
 
 export default createReducer(initialState, handlers)
