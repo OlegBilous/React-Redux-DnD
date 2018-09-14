@@ -24,22 +24,7 @@ const cardTarget = {
         const newColumn = props.column;
         const newItem = props.item;
 
-        console.log(props)
-    
         props.moveCard(column, item, newColumn, newItem);
-      },
-    hover(props, monitor, component) {
-        const draggedId = monitor.getItem().id;
-    
-        const dragIndexX = monitor.getItem().x;
-        const dragIndexY = monitor.getItem().y;
-    
-        const hoverIndexX = props.x;
-        const hoverIndexY = props.y;
-    
-        if (dragIndexX === hoverIndexX && dragIndexY === hoverIndexY) {
-          return;
-        }
     }
 }
   
